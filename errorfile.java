@@ -1,5 +1,5 @@
 // Калькулятор с ошибками
-public class Calculator {
+public class Errorfile {
     public static void main(String[] args) {
         int a = 10;
         int b = 0;

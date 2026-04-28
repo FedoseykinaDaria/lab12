@@ -1,7 +1,8 @@
 var calculator = new Vue({
     el: "#app",
     data: {
-        countries:[
+        // Перечень доступных стран и стоимость категорий при путешествии по ним
+        countries:[ 
             {
                 country: 'Россия',
                 rent: 400,
@@ -37,13 +38,15 @@ var calculator = new Vue({
             },
         ],
 
-        calculation_states:[
+        // Расшифровка статей калькуляции трат
+        calculation_states:[ 
             {state: "rent", name: "Аренда"},
             {state: "food", name: "Питание"},
             {state: "transport", name: "Транспорт"},
             {state: "entertainment", name: "Развлечения"}
         ],
 
+        // Данные калькуляции, которые выбираны пользователем
         calculation_data:{
             selected_country:'',
             selected_states: []
@@ -56,6 +59,7 @@ var calculator = new Vue({
     },
 
     methods:{
+        // Запуск операции вычисления трат
         main(){
             if(this.validation()){
                 this.calculation_travel();
@@ -64,11 +68,14 @@ var calculator = new Vue({
             }
         },
 
+        // Валидация выбранных пользователем данных
         validation(){
+            // Если не выбрана страна
             if (this.calculation_data.selected_country == ''){
                 this.error_message = "Кажется, вы забыли выбрать страну для путешествия. Попробуйте ещё раз";
                 return false;
             }
+            // Если не выбраны категории трат
             else if(this.calculation_data.selected_states.length == 0){
                 this.error_message = "Список статей ваших будущих расходов пуст. Поставьте галочки в местах, которые хотите добавить в счёт";
                 return false;
@@ -78,6 +85,7 @@ var calculator = new Vue({
             }
         },
 
+        // Вычисление стоимости путешествия по стране
         calculation_travel() {
             this.log = this.log + this.calculation_data.selected_country + " | ";
             for (obj of this.countries){
@@ -89,6 +97,7 @@ var calculator = new Vue({
             }
         },
 
+        // Добавление полученной записи в историю запрсов
         add_log(){
             for (obj of this.calculation_states){
                 for (counting_state of this.calculation_data.selected_states){
@@ -104,8 +113,10 @@ var calculator = new Vue({
                 this.message_logs.shift();
             }
             this.log = '';
+            this.travel_sum = 0;
         },
 
+        // Очистка истории запросов
         clean_logs(){
             this.message_logs = [];
             this.travel_sum = 0;
