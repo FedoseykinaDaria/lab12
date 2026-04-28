@@ -108,7 +108,7 @@ var calculator = new Vue({
 
         clean_logs(){
             this.message_logs = [];
-            this.travel_sum = 0/0;
+            this.travel_sum = 0;
         }
     }
 });
