@@ -1,0 +1,46 @@
+@font-face{
+    font-family: 'GreatVibes';
+    src: url(GreatVibes-Regular.ttf);
+}
+
+#app{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 80%);
+    width: 600px;
+    border-radius: 30px;
+    margin: auto;
+}
+h1{
+    font-family: 'GreatVibes';
+    color:rgb(80, 55, 40);
+    font-size: 40px;
+}
+p{
+    font-family: 'GreatVibes';
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+button{
+    margin-top: 10px;
+    color: white;
+    font-size: 16px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    background-color: rgb(120, 90, 75);
+    border-radius: 30px;
+}
+select, input, label{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    font-size: 25px;
+    margin: 0;
+    background-color:transparent ;
+}
+#logs_list{
+    background-image: url(image/logs_background.jpg);
+    text-align: center; 
+    margin: auto;
+    margin-bottom: 0px; 
+    margin-top: 0px;
+    width: 550px;
+}

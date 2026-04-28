@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "description" value = "Этот калькулятор поможет вам выполнить расчёты жизни в одной из стран для вашего путшествия">
+        <title>Калькулятор стоимости жизни</title>
+        
+        <link rel = "icon" href="image/favicon.png"></link>
+        <link rel="stylesheet" href="style.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    </head>
+    <body style="background-image: url(image/background_map.jpg);">
+        <div id = "app">
+            <p><img src="image/compass.png" style="margin-top:20px; height: 200px;"></p>
+
+            <h1> Калькулятор стоимости жизни для путешественников</h1>
+            <label>Выберите страну, по которой вы будете путешествовать</label><br>
+            <select v-model = 'calculation_data.selected_country'>
+                <option v-for = "country in countries" v-text = "country.country"></option>
+            </select><br><br>
+
+            <label> Выберите, для каких сфер вы хотите расчитать расход </label><br>
+            <template v-for="state in calculation_states">
+                <input type="checkbox" v-bind:value="state.state" v-model = "calculation_data.selected_states">
+                <label>{{state.name}}</label><br>
+            </template><br>
+
+            <button @click = "main()">Рассчитать расходы</button>
+            <p> Предполагаемые вами расходы составляют: {{travel_sum}} тыс. руб.</p><br>
+            
+            <label>{{error_message}}</label><br>
+            <p v-for="log in message_logs" id = "logs_list">{{log}}<br></p>
+
+            <button @click = "clean_logs()" style="margin-bottom: 20px;">Очистить историю запросов</button>
+        </div>
+
+        <script src = "script.js"></script>
+    </body>
+</html>
